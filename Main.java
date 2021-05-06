@@ -1,24 +1,37 @@
 import java.util.ArrayList;
 class Main {
   public static void main(String[] args) {
-   int[] nums = {0, 4, 4, 5, 6, 7};
-int result = bSearch(nums, 0, nums.length - 1, 4);
+
+  ArrayList<Integer> arlist = new ArrayList<Integer>( );
+
+      arlist.add(0);
+
+      arlist.add(10);
+
+      arlist.add(30);
+
+      arlist.add(40);
+
+      arlist.add(50);
+
+      arlist.add(70);
+arlist.add(70);arlist.add(70);arlist.add(70);
+int result = binarySearch(arlist, 0, 8, 70);
 System.out.println(result); 
   }
 
-  public static int bSearch(int[] arr, int left, int right, int x) {
- if (right >= left) {
-   int mid = (left + right) / 2;
-   if (arr[mid] == x) {
-     return mid;
-   }
-   else if (arr[mid] > x) {
-     return bSearch(arr, left, mid - 1, x);
-   }
-   else {
-     return bSearch(arr, mid + 1, right, x);
-   }
- }
- return -1;
+  public static int binarySearch(ArrayList<Integer> myList, 
+int low, int high, int target) {
+    int mid = (high + low) / 2;
+    if (target < myList.get(mid)) {
+       return binarySearch(myList, low, mid - 1, target);
+    }
+    else if (target > myList.get(mid)) {
+         return binarySearch(myList, mid + 1, high, target);
+    }
+    else if (myList.get(mid).equals(target)) {
+         return mid;
+    }
+    return -1;
 }
 }
